@@ -1,0 +1,41 @@
+#!/usr/bin/env ruby
+
+#frozen_string_literal: true
+
+require "selenium-webdriver" # load in the webdriver gem to interact with Selenium
+
+class TwitterBot
+  @@browser = Selenium::WebDriver.for :firefox
+  @@connected = false
+
+  def initialize(email, password)
+    @email = email
+    @password = password
+  end
+
+  def login
+    until @@connected
+      begin
+        @@browser.navigate.to("http://twitter.com")
+        sleep(2)
+        input_email = @@browser.find_element(class: "email-input")
+        input_email.send_keys(@email)
+
+        input_password = @@browser.find_element(name: "session[password]")
+        input_password.click
+        input_password.send_keys(@password)
+        input_password.send_keys(:enter)
+        @@connected = true
+        sleep(2)
+      rescue
+        puts "reconnecting..."
+        sleep(5)
+      end
+    end
+    puts "connected"
+    sleep(5)
+  end
+end
+
+clinton = TwitterBot.new("francisauta@gmail.com", "microverse123")
+clinton.login
