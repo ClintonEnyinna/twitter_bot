@@ -16,7 +16,7 @@ class TwitterBot
   def login
     until @@connected
       begin
-        @@browser.navigate.to("http://twitter.com")
+        @@browser.navigate.to("https://twitter.com")
         sleep(2)
         input_email = @@browser.find_element(class: "email-input")
         input_email.send_keys(@email)
@@ -35,7 +35,14 @@ class TwitterBot
     puts "connected"
     sleep(5)
   end
+
+  def search(text)
+    @text = text
+    @@browser.navigate.to("https://twitter.com/search?q=%23#{@text}&src=typed_query")
+    sleep(2)
+  end
 end
 
 clinton = TwitterBot.new("francisauta@gmail.com", "microverse123")
 clinton.login
+clinton.search("rubyonrails")
