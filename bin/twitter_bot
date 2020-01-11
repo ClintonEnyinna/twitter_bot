@@ -6,7 +6,11 @@ require "selenium-webdriver" # load in the webdriver gem to interact with Seleni
 
 class TwitterBot
   @@browser = Selenium::WebDriver.for :firefox
+  @@browser.manage.window.maximize
+  @@wait = Selenium::WebDriver::Wait.new(timeout: 10) # seconds
   @@connected = false
+  @@links = []
+  @@likes = 0
 
   def initialize(email, password)
     @email = email
@@ -18,7 +22,7 @@ class TwitterBot
       begin
         @@browser.navigate.to("https://twitter.com")
         sleep(2)
-        input_email = @@browser.find_element(class: "email-input")
+        input_email = @@browser.find_element(name: "session[username_or_email]")
         input_email.send_keys(@email)
 
         input_password = @@browser.find_element(name: "session[password]")
@@ -33,16 +37,49 @@ class TwitterBot
       end
     end
     puts "connected"
-    sleep(5)
+    sleep(2)
   end
 
   def search(text)
-    @text = text
-    @@browser.navigate.to("https://twitter.com/search?q=%23#{@text}&src=typed_query")
+    @@browser.navigate.to("https://twitter.com/search?q=%23#{text}&src=typed_query")
     sleep(2)
+    3.times do
+      @@browser.execute_script("window.scrollTo(0, document.body.scrollHeight)")
+      sleep 10
+    end
+  end
+
+  def like_tweets
+    tweets = @@browser.find_elements(xpath: '//*[@data-testid="tweet"]//a[@dir="auto"]')
+
+    tweets.each { |tweet| @@links << tweet.attribute("href") }
+
+    @@links.each do |link|
+      @@browser.navigate.to(link)
+      sleep 2
+      begin
+        like = @@browser.find_element(xpath: '//*[@data-testid="like"]')
+        @@likes += 1
+        puts "Hurray! Twitter bot just liked a post!"
+        begin
+          like.click
+          sleep 10
+        rescue
+          sleep 60
+        end
+      rescue
+        sleep(2)
+      end
+    end
+  end
+
+  def total_likes
+    @@likes
   end
 end
 
 clinton = TwitterBot.new("francisauta@gmail.com", "microverse123")
 clinton.login
-clinton.search("rubyonrails")
+clinton.search("ruby")
+clinton.like_tweets
+puts clinton.total_likes
