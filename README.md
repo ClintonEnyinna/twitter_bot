@@ -13,9 +13,9 @@ Twitter_Bot
 
 Hello and welcome to Twitter_Bot. This is one of many projects that were built as a requirement to complete the Ruby section at [Microverse](https://www.microverse.org). It was built with Ruby using [selenium web-driver](https://selenium.dev/projects/) library.
 
-Twitter_bot is an app that helps you put your name out there to get more traffic to your profile and also tweaks twitter's recommendation algorithm so you get more meaningful or related tweets of interest. 
+Twitter_bot is an app that helps you put your name out there to get more traffic to your profile and also tweaks twitter's recommendation algorithm so you get more meaningful or related tweets of interest to keep you up to date fast. 
 
-It logs into your account, searches for a particular topic of interest, gives you time to read the tweets and likes them afterwards. All by itselft. It skips tweets already liked by you. 
+It logs into your account, searches for a particular topic of interest, gives you time to read the tweets and likes them afterwards. All by itselft. It skips tweets already liked by you. If you are too busy to check twitter then Twitter_Bot is perfect for you. Read tweets and stay up to date while you code or do something else.
 
 Features
 --------
