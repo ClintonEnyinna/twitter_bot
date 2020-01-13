@@ -83,7 +83,7 @@ puts user.total_likes
 * [Ruby](https://www.ruby-lang.org/en/) - Programming language used
 * [Firefox](https://www.mozilla.org/es-MX/firefox/new/) - Web browser
 * [Gecko driver](https://github.com/mozilla/geckodriver/releases) - Firefox web driver
-* [Selenium web-driver](https://github.com/SeleniumHQ/selenium/wiki/Ruby-Bindings)
+* [Selenium web-driver](https://github.com/SeleniumHQ/selenium/wiki/Ruby-Bindings) - Library to automate web based activities
 * [VS Code](https://code.visualstudio.com/) - The code editor used
 * [Ubuntu](https://www.linux.org/pages/download/) - Operating System
 
