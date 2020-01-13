@@ -1,4 +1,3 @@
-<h1 align="center">Enumerable Methods</h1>
 <p>
   <img alt="Version" src="https://img.shields.io/badge/version-0.0.1-blue.svg?cacheSeconds=2592000" />
   <a href="#" target="_blank">
@@ -8,9 +7,6 @@
     <img alt="Twitter: ClintonEnyinna " src="https://img.shields.io/twitter/follow/ClintonEnyinna .svg?style=social" />
   </a>
 </p>
-
-
-## Description of the project 
 
 Twitter_Bot
 ===========
