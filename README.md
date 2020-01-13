@@ -15,11 +15,11 @@
 Twitter_Bot
 ===========
 
-Hello and welcome to Twitter_Bot. This project is one of many that was built as a requirement to complete the Ruby section at [Microverse](https://www.microverse.org). It was built using [selenium web-driver](https://selenium.dev/projects/)
+Hello and welcome to Twitter_Bot. This is one of many projects that were built as a requirement to complete the Ruby section at [Microverse](https://www.microverse.org). It was built with Ruby using [selenium web-driver](https://selenium.dev/projects/) library.
 
 Twitter_bot is an app that helps you put your name out there to get more traffic to your profile and also tweaks twitter's recommendation algorithm so you get more meaningful or related tweets of interest. 
 
-It logs into your account, searches for a particular topic of interest, gives you time to read the tweet and likes them afterwards. All by itselft. It skips tweets already liked by you. 
+It logs into your account, searches for a particular topic of interest, gives you time to read the tweets and likes them afterwards. All by itselft. It skips tweets already liked by you. 
 
 Features
 --------
@@ -85,9 +85,9 @@ puts user.total_likes
 
 ## Built with
 * [Ruby](https://www.ruby-lang.org/en/) - Programming language used
-* [Firefox](https://www.mozilla.org/es-MX/firefox/new/)
-* [Gecko driver]()
-* [Selenium web-driver]()
+* [Firefox](https://www.mozilla.org/es-MX/firefox/new/) - Web browser
+* [Gecko driver](https://github.com/mozilla/geckodriver/releases) - Firefox web driver
+* [Selenium web-driver](https://github.com/SeleniumHQ/selenium/wiki/Ruby-Bindings)
 * [VS Code](https://code.visualstudio.com/) - The code editor used
 * [Ubuntu](https://www.linux.org/pages/download/) - Operating System
 
