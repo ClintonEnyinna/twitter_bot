@@ -7,7 +7,6 @@ require "selenium-webdriver" # load in the webdriver gem to interact with Seleni
 class TwitterBot
   @@browser = Selenium::WebDriver.for :firefox #set the navigator to use. Don't forget to download it's corresponding driver
   @@browser.manage.window.maximize
-  @@wait = Selenium::WebDriver::Wait.new(timeout: 10) # seconds
   @@connected = false
   @@links = []
   @@likes = 0
@@ -41,7 +40,7 @@ class TwitterBot
   end
 
   def search(text, num = 2)
-    @@browser.navigate.to("https://twitter.com/search?q=%23#{text}&src=typed_query") #make a query to database for a particular topic
+    @@browser.navigate.to("https://twitter.com/search?q=#{text}&src=recent_search_click&f=live") #make a query to database for a particular topic. Latest
     sleep(2)
     num.times do
       puts "I am scrolling"
@@ -81,6 +80,6 @@ end
 
 clinton = TwitterBot.new("francisauta@gmail.com", "microverse123")
 clinton.login
-clinton.search("UI/UX Mexico", 10)
+clinton.search("Diseñadores UI/UX", 10)
 clinton.like_tweets
 puts clinton.total_likes
