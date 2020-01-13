@@ -40,10 +40,11 @@ class TwitterBot
     sleep(2)
   end
 
-  def search(text)
+  def search(text, num = 2)
     @@browser.navigate.to("https://twitter.com/search?q=%23#{text}&src=typed_query")
     sleep(2)
-    3.times do
+    num.times do
+      puts "I am scrolling"
       @@browser.execute_script("window.scrollTo(0, document.body.scrollHeight)")
       sleep 10
     end
@@ -80,6 +81,6 @@ end
 
 clinton = TwitterBot.new("francisauta@gmail.com", "microverse123")
 clinton.login
-clinton.search("ruby")
+clinton.search("UI/UX Mexico", 10)
 clinton.like_tweets
 puts clinton.total_likes
