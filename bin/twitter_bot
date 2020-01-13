@@ -5,7 +5,7 @@
 require "selenium-webdriver" # load in the webdriver gem to interact with Selenium
 
 class TwitterBot
-  @@browser = Selenium::WebDriver.for :firefox
+  @@browser = Selenium::WebDriver.for :firefox #set the navigator to use. Don't forget to download it's corresponding driver
   @@browser.manage.window.maximize
   @@wait = Selenium::WebDriver::Wait.new(timeout: 10) # seconds
   @@connected = false
@@ -41,17 +41,17 @@ class TwitterBot
   end
 
   def search(text, num = 2)
-    @@browser.navigate.to("https://twitter.com/search?q=%23#{text}&src=typed_query")
+    @@browser.navigate.to("https://twitter.com/search?q=%23#{text}&src=typed_query") #make a query to database for a particular topic
     sleep(2)
     num.times do
       puts "I am scrolling"
-      @@browser.execute_script("window.scrollTo(0, document.body.scrollHeight)")
+      @@browser.execute_script("window.scrollTo(0, document.body.scrollHeight)") # scroll to bottom of page x number of times to load more content
       sleep 10
     end
   end
 
   def like_tweets
-    tweets = @@browser.find_elements(xpath: '//*[@data-testid="tweet"]//a[@dir="auto"]')
+    tweets = @@browser.find_elements(xpath: '//*[@data-testid="tweet"]//a[@dir="auto"]') #find html elements for tweets
 
     tweets.each { |tweet| @@links << tweet.attribute("href") }
 
@@ -59,7 +59,7 @@ class TwitterBot
       @@browser.navigate.to(link)
       sleep 2
       begin
-        like = @@browser.find_element(xpath: '//*[@data-testid="like"]')
+        like = @@browser.find_element(xpath: '//*[@data-testid="like"]') #find html element for the like button
         @@likes += 1
         puts "Hurray! Twitter bot just liked a post!"
         begin
