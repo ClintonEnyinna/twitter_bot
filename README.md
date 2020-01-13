@@ -68,7 +68,7 @@ user.login
 An optional second argument of type integer can be passed if you want to like a lot more tweets.
 **search:**
 ```ruby
-user.search("Diseñadores UI/UX", 10)
+user.search("Diseñadores UI/UX", 4)
 ```
 **like tweets:**
 ```ruby
