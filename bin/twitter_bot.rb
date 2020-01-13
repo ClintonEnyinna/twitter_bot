@@ -80,6 +80,6 @@ end
 
 # clinton = TwitterBot.new("francisauta@gmail.com", "microverse123")
 # clinton.login
-# clinton.search("Diseñadores UI/UX", 10)
+# clinton.search("Diseñadores UI/UX", 4)
 # clinton.like_tweets
 # puts clinton.total_likes
