@@ -38,13 +38,13 @@ Installations
 2. You will need to install [Firefox](https://www.mozilla.org/es-MX/firefox/new/) and Firefox driver([gecko driver](https://github.com/mozilla/geckodriver/releases)). Do not forget to put the driver in your PATH after download. **usr/local/bin**.
 3. clone this repository and install all necessarry dependencies.
 ```ruby
-git clone https://github.com/ClintonEnyinna/twitter_bot.git && bundle install
+git clone https://github.com/ClintonEnyinna/twitter_bot.git && cd twitter_bot
 
 ```
 4. Go to bin/twitter_bot.rb and modify credentials and search query, then save. More detailed explanation on how to use the methods below.
 5. Go into the folder and start the app
 ```ruby
-cd twitter_bot
+bundle install
 ruby bin/twitter_bot.rb
 ```
 
