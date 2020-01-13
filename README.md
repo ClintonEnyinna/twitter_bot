@@ -12,15 +12,87 @@
 
 ## Description of the project 
 
->
+Twitter_Bot
+===========
+
+Hello and welcome to Twitter_Bot. This project is one of many that was built as a requirement to complete the Ruby section at [Microverse](https://www.microverse.org). It was built using [selenium web-driver](https://selenium.dev/projects/)
+
+Twitter_bot is an app that helps you put your name out there to get more traffic to your profile and also tweaks twitter's recommendation algorithm so you get more meaningful or related tweets of interest. 
+
+It logs into your account, searches for a particular topic of interest, gives you time to read the tweet and likes them afterwards. All by itselft. It skips tweets already liked by you. 
+
+Features
+--------
+* Opens the navigator
+* Logs into your twitter account
+* Handles search queries
+* Likes tweets
+
+## Getting Started
+
+Below are the steps you have to follow to get twitter_bot up and running.
+
+Create a twitter account
+------------------------
+You will need to create and account, that's if you don't already have one. Be careful not to push code with confidential information to github.
+
+Installations
+--------------
+1. This twitter bot is built with [Ruby](https://www.ruby-lang.org/en/) so you need to have it installed.
+2. You will need to install [Firefox](https://www.mozilla.org/es-MX/firefox/new/) and Firefox driver([gecko driver](https://github.com/mozilla/geckodriver/releases)). Do not forget to put the driver in your PATH after download. **usr/local/bin**.
+3. clone this repository and install all necessarry dependencies.
+```ruby
+git clone https://github.com/ClintonEnyinna/twitter_bot.git && bundle install
+
+```
+4. Go to bin/twitter_bot.rb and modify credentials and search query, then save. More detailed explanation on how to use the methods below.
+5. Go into the folder and start the app
+```ruby
+cd twitter_bot
+ruby bin/twitter_bot.rb
+```
+
+## How to Use the Methods
+
+Twitter_bot is very simple to use as it comes with four basic instance methods.
+* #login
+* #search('ruby')
+* #like_tweets
+* #total_likes
+
+You have to initialize the TwitterBot class with two arguments ('email/username', 'password') to be able to use the methods mentioned above.
+```ruby
+user = TwitterBot.new("john@gmail.com", "passsword")
+```
+
+**login:**
+```ruby
+user.login
+```
+An optional second argument of type integer can be passed if you want to like a lot more tweets.
+**search:**
+```ruby
+user.search("Diseñadores UI/UX", 10)
+```
+**like tweets:**
+```ruby
+user.like_tweets
+```
+**total tweets liked:**
+```ruby
+puts user.total_likes
+```
 
 ## Built with
-<ul>
-  <p>This project was built with:</p>
-  <li>Ruby</li>
-</ul>
+* [Ruby](https://www.ruby-lang.org/en/) - Programming language used
+* [Firefox](https://www.mozilla.org/es-MX/firefox/new/)
+* [Gecko driver]()
+* [Selenium web-driver]()
+* [VS Code](https://code.visualstudio.com/) - The code editor used
+* [Ubuntu](https://www.linux.org/pages/download/) - Operating System
 
-## 🏠 [Homepage](https://github.com/ClintonEnyinna/enumerable_methods)
+
+## 🏠 [Homepage](https://github.com/ClintonEnyinna/twitter_bot)
 
 <!-- CONTRIBUTING -->
 ## Contributing
