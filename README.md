@@ -37,19 +37,23 @@ Installations
 1. This twitter bot is built with [Ruby](https://www.ruby-lang.org/en/) so you need to have it installed.
 2. You will need to install [Firefox](https://www.mozilla.org/es-MX/firefox/new/) and Firefox driver([gecko driver](https://github.com/mozilla/geckodriver/releases)) or [Chrome](https://www.google.com/intl/es-419/chrome/) and [Chrome's driver](https://chromedriver.chromium.org/). Do not forget to put the driver in your PATH after download. **usr/local/bin** for Linux systems.
 3. clone this repository and install all necessarry dependencies.
-```ruby
+```
 git clone https://github.com/ClintonEnyinna/twitter_bot.git && cd twitter_bot
 ```
-4. Install dependencies.
+4. Checkout the current branch
+```
+git checkout feature/likes
+```
+5. Install dependencies.
 ```ruby
 bundle install
 ```
-5. Start the app.
+6. Start the app.
 ```ruby
 bundle install
 ruby bin/twitter_bot.rb
 ```
-5. Follow the interactive console interface instructions to fill in your login credentials, browser customization, what you want to search for and how much content you want the bot to like. 
+7. Follow the interactive console interface instructions to fill in your login credentials, browser customization, what you want to search for and how much content you want the bot to like. 
 
 ## Things to be aware of
 * **Do not forget to download the browser's respective drivers**
