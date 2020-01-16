@@ -19,7 +19,7 @@ It logs into your account, searches for a particular topic of interest, gives yo
 
 Features
 --------
-* Opens the navigator
+* Opens the navigator (recommended: Chrome or Firefox)
 * Logs into your twitter account
 * Handles search queries
 * Likes tweets
@@ -35,49 +35,27 @@ You will need to create and account, that's if you don't already have one. Be ca
 Installations
 --------------
 1. This twitter bot is built with [Ruby](https://www.ruby-lang.org/en/) so you need to have it installed.
-2. You will need to install [Firefox](https://www.mozilla.org/es-MX/firefox/new/) and Firefox driver([gecko driver](https://github.com/mozilla/geckodriver/releases)). Do not forget to put the driver in your PATH after download. **usr/local/bin**.
+2. You will need to install [Firefox](https://www.mozilla.org/es-MX/firefox/new/) and Firefox driver([gecko driver](https://github.com/mozilla/geckodriver/releases)) or [Chrome](https://www.google.com/intl/es-419/chrome/) and [Chrome's driver](https://chromedriver.chromium.org/). Do not forget to put the driver in your PATH after download. **usr/local/bin** for Linux systems.
 3. clone this repository and install all necessarry dependencies.
 ```ruby
 git clone https://github.com/ClintonEnyinna/twitter_bot.git && cd twitter_bot
-
 ```
-4. Go to bin/twitter_bot.rb and modify credentials and search query, then save. More detailed explanation on how to use the methods below.
-5. Go into the folder and start the app
+4. Install dependencies.
+```ruby
+bundle install
+```
+5. Start the app.
 ```ruby
 bundle install
 ruby bin/twitter_bot.rb
 ```
+5. Follow the interactive console interface instructions to fill in your login credentials, browser customization, what you want to search for and how much content you want the bot to like. 
 
-## How to Use the Methods
-
-Twitter_bot is very simple to use as it comes with four basic instance methods.
-* #login
-* #search('ruby')
-* #like_tweets
-* #total_likes
-
-You have to initialize the TwitterBot class with two arguments ('email/username', 'password') to be able to use the methods mentioned above.
-```ruby
-user = TwitterBot.new("john@gmail.com", "passsword")
-```
-
-**login:**
-```ruby
-user.login
-```
-An optional second argument of type integer can be passed if you want to like a lot more tweets.
-**search:**
-```ruby
-user.search("Diseñadores UI/UX", 4)
-```
-**like tweets:**
-```ruby
-user.like_tweets
-```
-**total tweets liked:**
-```ruby
-puts user.total_likes
-```
+## Things to be aware of
+* **Do not forget to download the browser's respective drivers**
+* Simply follow the interactive console
+* The app was made to only work on Firefox and Chrome.
+* Ruby version: **ruby 2.6.5p114**
 
 ## Built with
 * [Ruby](https://www.ruby-lang.org/en/) - Programming language used
@@ -100,8 +78,6 @@ Any contributions you make are **greatly appreciated**.
 3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
 4. Push to the Branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
-
-
 
 <!-- LICENSE -->
 ## License
