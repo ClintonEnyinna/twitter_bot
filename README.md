@@ -50,7 +50,6 @@ bundle install
 ```
 6. Start the app.
 ```ruby
-bundle install
 ruby bin/twitter_bot.rb
 ```
 7. Follow the interactive console interface instructions to fill in your login credentials, browser customization, what you want to search for and how much content you want the bot to like. 
