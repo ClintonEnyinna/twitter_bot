@@ -7,7 +7,7 @@ class User
     @username = username
     @password = password
     @logged_in = false
-    @browser = 'firefox'
+    @browser = "firefox"
     @driver = nil
   end
 
@@ -17,7 +17,8 @@ class User
 
   def login
     @driver = Selenium::WebDriver.for @browser.to_sym
-    url = 'https://twitter.com/login'
+    @driver.manage.window.maximize
+    url = "https://twitter.com/login"
 
     go_to(url)
     fill_info
@@ -35,7 +36,7 @@ class User
         search_pattern = "//div[contains(@class, 'field')]//input[@name='session[username_or_email]']"
         @logged_in = @driver.find_element(xpath: search_pattern).displayed?
       rescue StandardError
-        puts 'reconnecting...'
+        puts "reconnecting..."
         sleep 5
       end
     end
