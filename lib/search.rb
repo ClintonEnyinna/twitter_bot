@@ -12,8 +12,8 @@ class Search
     @driver.navigate.to(search_url)
     sleep(2)
     @num.times do
-      puts "I am scrolling"
-      @driver.execute_script("window.scrollTo(0, document.body.scrollHeight)")
+      puts 'I am scrolling'
+      @driver.execute_script('window.scrollTo(0, document.body.scrollHeight)')
       sleep 8
     end
   end

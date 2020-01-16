@@ -7,7 +7,7 @@ class User
     @username = username
     @password = password
     @logged_in = false
-    @browser = "firefox"
+    @browser = 'firefox'
     @driver = nil
   end
 
@@ -18,7 +18,7 @@ class User
   def login
     @driver = Selenium::WebDriver.for @browser.to_sym
     @driver.manage.window.maximize
-    url = "https://twitter.com/login"
+    url = 'https://twitter.com/login'
 
     go_to(url)
     fill_info
@@ -35,7 +35,7 @@ class User
         sleep 3
         @logged_in = true
       rescue StandardError
-        puts "reconnecting..."
+        puts 'reconnecting...'
         sleep 5
       end
     end
@@ -43,11 +43,11 @@ class User
 
   def fill_info
     begin
-      usr_inp = @driver.find_element(xpath: "//div[contains(@class, 'field')]//input[@name='session[username_or_email]']")
-      usr_inp.clear
-      usr_inp.send_keys(@username)
-    rescue
-      usr_inp = @driver.find_element(name: "session[username_or_email")
+      usr = @driver.find_element(xpath: "//div[contains(@class, 'field')]//input[@name='session[username_or_email]']")
+      usr.clear
+      usr.send_keys(@username)
+    rescue StandardError
+      usr_inp = @driver.find_element(name: 'session[username_or_email]')
       usr_inp.clear
       usr_inp.send_keys(@username)
     end
@@ -57,8 +57,8 @@ class User
       password_inp.clear
       password_inp.send_keys(@password)
       password_inp.send_keys(:enter)
-    rescue
-      password_inp = @driver.find_element(name: "session[password]")
+    rescue StandardError
+      password_inp = @driver.find_element(name: 'session[password]')
       password_inp.clear
       password_inp.send_keys(@password)
       password_inp.send_keys(:enter)
