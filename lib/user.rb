@@ -33,8 +33,7 @@ class User
       begin
         @driver.navigate.to(url)
         sleep 3
-        search_pattern = "//div[contains(@class, 'field')]//input[@name='session[username_or_email]']"
-        @logged_in = @driver.find_element(xpath: search_pattern).displayed?
+        @logged_in = true
       rescue StandardError
         puts "reconnecting..."
         sleep 5
@@ -43,13 +42,26 @@ class User
   end
 
   def fill_info
-    usr_inp = @driver.find_element(xpath: "//div[contains(@class, 'field')]//input[@name='session[username_or_email]']")
-    usr_inp.clear
-    usr_inp.send_keys(@username)
+    begin
+      usr_inp = @driver.find_element(xpath: "//div[contains(@class, 'field')]//input[@name='session[username_or_email]']")
+      usr_inp.clear
+      usr_inp.send_keys(@username)
+    rescue
+      usr_inp = @driver.find_element(name: "session[username_or_email")
+      usr_inp.clear
+      usr_inp.send_keys(@username)
+    end
 
-    password_inp = @driver.find_element(xpath: "//div[contains(@class, 'field')]//input[@name='session[password]']")
-    password_inp.clear
-    password_inp.send_keys(@password)
-    password_inp.send_keys(:enter)
+    begin
+      password_inp = @driver.find_element(xpath: "//div[contains(@class, 'field')]//input[@name='session[password]']")
+      password_inp.clear
+      password_inp.send_keys(@password)
+      password_inp.send_keys(:enter)
+    rescue
+      password_inp = @driver.find_element(name: "session[password]")
+      password_inp.clear
+      password_inp.send_keys(@password)
+      password_inp.send_keys(:enter)
+    end
   end
 end

@@ -8,15 +8,15 @@ require "./lib/search.rb"
 require "./lib/like_tweets.rb"
 
 puts "Type in your username or email: "
-username = gets.chomp
+username = "francisauta@gmail.com" #gets.chomp
 puts "Type in your password: "
-password = gets.chomp
+password = "microverse12" #gets.chomp
 
 puts "What do you want to search for?"
-topic = gets.chomp
+topic = "ruby" #gets.chomp
 
 puts "The default page scroll is 2\nDo you want to modify it? (y/n)"
-change_scrolls = gets.chomp
+change_scrolls = "n" #gets.chomp
 if change_scrolls[0].downcase == "y"
   puts "How many page scrolls?"
   scrolls = gets.chomp
