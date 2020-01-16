@@ -23,7 +23,6 @@ if change_browser[0].downcase == "y"
   browser = "chrome"
   user.set_browser(browser)
 end
-# user.set_browser("chrome")
 user.login
 
 item = Search.new(topic, user.driver)

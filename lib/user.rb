@@ -26,7 +26,7 @@ class User
 
     go_to(url)
     fill_info
-
+    @logged_in = false
     sleep 3
   end
 
@@ -65,6 +65,5 @@ class User
       password_input.send_keys(@password)
       password_input.send_keys(:enter)
     end
-    @logged_in = true
   end
 end
