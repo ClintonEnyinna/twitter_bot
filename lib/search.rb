@@ -10,11 +10,11 @@ class Search
   def search
     search_url = "https://twitter.com/search?q=#{@text}&src=recent_search_click&f=live"
     @driver.navigate.to(search_url)
-    sleep(2)
+    sleep 2
     @num.times do
       puts 'I am scrolling'
       @driver.execute_script('window.scrollTo(0, document.body.scrollHeight)')
-      sleep 8
+      sleep 10
     end
   end
 end
