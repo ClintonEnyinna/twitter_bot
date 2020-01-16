@@ -1,27 +1,24 @@
+# frozen_string_literal: true
 
 class User
   attr_reader :browser, :logged_in, :username
-  @@driver
 
   def initialize(username, password)
     @username = username
     @password = password
     @logged_in = false
     @browser = "firefox"
+    @driver = nil
   end
 
-  def set_browser(browser)
+  def use_browser(browser)
     @browser = browser
   end
 
-  def driver
-    @@driver
-  end
-
-  public
+  attr_reader :driver
 
   def login
-    @@driver = Selenium::WebDriver.for @browser.to_sym
+    @driver = Selenium::WebDriver.for @browser.to_sym
     url = "https://twitter.com/login"
 
     go_to(url)
@@ -34,10 +31,12 @@ class User
 
   def go_to(url)
     until @logged_in
+      @driver.navigate.to(url)
+      inputs = @driver.find_element(xpath: "//div[contains(@class, 'field')]//input[@name='session[username_or_email]']")
       begin
-        @@driver.navigate.to(url)
+        @driver.navigate.to(url)
         sleep 3
-        @logged_in = @@driver.find_element(class: "js-username-field").displayed? || username_input = @@driver.find_element(name: "session[username_or_email]").displayed?
+        @logged_in = @driver.find_element(xpath: "//div[contains(@class, 'field')]//input[@name='session[username_or_email]']").displayed?
       rescue
         puts "reconnecting..."
         sleep 5
@@ -45,25 +44,14 @@ class User
     end
   end
 
-  private
-
   def fill_info
-    begin
-      username_input = @@driver.find_element(class: "js-username-field")
-      username_input.send_keys(@username)
-    rescue
-      username_input = @@driver.find_element(name: "session[username_or_email]")
-      username_input.send_keys(@username)
-    end
+    username_input = @driver.find_element(xpath: "//div[contains(@class, 'field')]//input[@name='session[username_or_email]']")
+    username_input.clear
+    username_input.send_keys(@username)
 
-    begin
-      password_input = @@driver.find_element(class: "js-password-field")
-      password_input.send_keys(@password)
-      password_input.send_keys(:enter)
-    rescue
-      password_input = @@driver.find_element(name: "session[password]")
-      password_input.send_keys(@password)
-      password_input.send_keys(:enter)
-    end
+    password_input = @driver.find_element(xpath: "//div[contains(@class, 'field')]//input[@name='session[password]']")
+    password_input.clear
+    password_input.send_keys(@password)
+    password_input.send_keys(:enter)
   end
 end

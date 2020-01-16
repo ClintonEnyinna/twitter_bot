@@ -2,8 +2,7 @@
 
 #frozen_string_literal: true
 
-require "selenium-webdriver" # load in the webdriver gem to interact with Selenium
-require "io/console"
+require "selenium-webdriver"
 require "./lib/user.rb"
 require "./lib/search.rb"
 require "./lib/like_tweets.rb"
@@ -11,8 +10,8 @@ require "./lib/like_tweets.rb"
 puts "Type in your username or email: "
 username = gets.chomp
 puts "Type in your password: "
+password = gets.chomp
 
-password = IO::console.getpass
 puts "What do you want to search for?"
 topic = gets.chomp
 
@@ -21,7 +20,7 @@ puts "The default browser is #{user.browser}.\nDo you want to change it to chrom
 change_browser = gets.chomp
 if change_browser[0].downcase == "y"
   browser = "chrome"
-  user.set_browser(browser)
+  user.use_browser(browser)
 end
 user.login
 
