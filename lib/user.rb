@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class User
-  attr_reader :browser, :logged_in, :username
+  attr_reader :browser, :logged_in, :username, :driver
 
   def initialize(username, password)
     @username = username
@@ -14,8 +14,6 @@ class User
   def use_browser(browser)
     @browser = browser
   end
-
-  attr_reader :driver
 
   def login
     @driver = Selenium::WebDriver.for @browser.to_sym
