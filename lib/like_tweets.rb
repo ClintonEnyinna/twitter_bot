@@ -12,7 +12,7 @@ class LikeTweets
     links = []
     tweets = @driver.find_elements(xpath: '//*[@data-testid="tweet"]//a[@dir="auto"]')
 
-    tweets.each { |tweet| links << tweet.attribute('href') }
+    tweets.each { |tweet| links << tweet.attribute("href") }
 
     links.each do |link|
       @driver.navigate.to(link)
@@ -20,10 +20,10 @@ class LikeTweets
       begin
         like = @driver.find_element(xpath: '//div[contains(@class, "r-rjfia")]//*[@aria-label="Like"]')
         @likes += 1
-        puts 'Hurray! Twitter bot just liked a post!'
+        puts "Hurray! Twitter bot just liked a post!"
         begin
           like.click
-          sleep 10
+          sleep 8
         rescue StandardError
           sleep 60
         end

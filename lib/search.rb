@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Search
-  def initialize(text, driver, num = 2)
+  def initialize(text, driver, num)
     @text = text
     @num = num
     @driver = driver
@@ -12,9 +12,9 @@ class Search
     @driver.navigate.to(search_url)
     sleep(2)
     @num.times do
-      puts 'I am scrolling'
-      @driver.execute_script('window.scrollTo(0, document.body.scrollHeight)')
-      sleep 5
+      puts "I am scrolling"
+      @driver.execute_script("window.scrollTo(0, document.body.scrollHeight)")
+      sleep 8
     end
   end
 end
