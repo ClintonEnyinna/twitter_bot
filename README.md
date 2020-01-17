@@ -40,19 +40,15 @@ Installations
 ```
 git clone https://github.com/ClintonEnyinna/twitter_bot.git && cd twitter_bot
 ```
-4. Checkout the current branch
-```
-git checkout feature/likes
-```
-5. Install dependencies.
+4. Install dependencies.
 ```ruby
 bundle install
 ```
-6. Start the app.
+5. Start the app.
 ```ruby
 ruby bin/twitter_bot.rb
 ```
-7. Follow the interactive console interface instructions to fill in your login credentials, browser customization, what you want to search for and how much content you want the bot to like. 
+6. Follow the interactive console interface instructions to fill in your login credentials, browser customization, what you want to search for and how much content you want the bot to like. 
 
 ## Things to be aware of
 * **Do not forget to download the browser's respective drivers**
