@@ -3,6 +3,7 @@
 #frozen_string_literal: true
 
 require "selenium-webdriver"
+require "io/console"
 require "./lib/user.rb"
 require "./lib/search.rb"
 require "./lib/like_tweets.rb"
@@ -10,7 +11,7 @@ require "./lib/like_tweets.rb"
 puts "Type in your username or email: "
 username = gets.chomp
 puts "Type in your password: "
-password = gets.chomp
+password = STDIN.getpass("Password:")
 
 puts "What do you want to search for?"
 topic = gets.chomp
