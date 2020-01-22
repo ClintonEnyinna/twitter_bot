@@ -1,51 +1,47 @@
 #!/usr/bin/env ruby
 
-#frozen_string_literal: true
+# frozen_string_literal: true
 
-require "selenium-webdriver"
-require "io/console"
-require "./lib/user.rb"
-require "./lib/search.rb"
-require "./lib/like_tweets.rb"
+require 'selenium-webdriver'
+require 'io/console'
+require './lib/user.rb'
+require './lib/search.rb'
+require './lib/like_tweets.rb'
 
-puts "Type in your username or email: "
+puts 'Type in your username or email: '
 username = gets.chomp
-puts "Type in your password: "
-password = STDIN.getpass("Password:")
+puts 'Type in your password: '
+password = STDIN.getpass('Password:')
 
-puts "What do you want to search for?"
+puts 'What do you want to search for?'
 topic = gets.chomp
 
 puts "The default page scroll is '2'\nDo you want to modify it? (y/n)"
 change_scrolls = gets.chomp
-if change_scrolls == ""
-  change_scrolls = 'n'
-end
-if change_scrolls[0].downcase == "y"
-  puts "How many page scrolls?"
-  while true
+change_scrolls = 'n' if change_scrolls == ''
+if change_scrolls[0].downcase == 'y'
+  puts 'How many page scrolls?'
+  wrong_inp = true
+  while wrong_inp
     begin
       scrolls = gets.chomp
-      if scrolls.to_i == 0
-        raise "Not a number"
-      end
-      break
-    rescue
-      puts "Number of scrolls should be a number!"
+      raise 'Not a number' if scrolls.to_i.zero?
+
+      wrong_inp = false
+    rescue StandardError
+      puts 'Number of scrolls should be a number!'
     end
   end
 else
-  scrolls = "2"
+  scrolls = '2'
 end
 
 user = User.new(username, password)
 puts "The default browser is #{user.browser}.\nDo you want to change it to chrome? (y/n)"
 change_browser = gets.chomp
-if change_browser == ""
-  change_browser = 'n'
-end
-if change_browser[0].downcase == "y"
-  browser = "chrome"
+change_browser = 'n' if change_browser == ''
+if change_browser[0].downcase == 'y'
+  browser = 'chrome'
   user.use_browser(browser)
 end
 user.login
