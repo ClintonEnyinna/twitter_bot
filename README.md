@@ -35,7 +35,10 @@ You will need to create and account, that's if you don't already have one. Be ca
 Installations
 --------------
 1. This twitter bot is built with [Ruby](https://www.ruby-lang.org/en/) so you need to have it installed.
-2. You will need to install [Firefox](https://www.mozilla.org/es-MX/firefox/new/) and Firefox driver([gecko driver](https://github.com/mozilla/geckodriver/releases)) or [Chrome](https://www.google.com/intl/es-419/chrome/) and [Chrome's driver](https://chromedriver.chromium.org/). Do not forget to put the driver in your PATH after download. **usr/local/bin** for Linux systems.
+2. You will need to install [Firefox](https://www.mozilla.org/es-MX/firefox/new/) and Firefox driver([gecko driver](https://github.com/mozilla/geckodriver/releases)) or [Chrome](https://www.google.com/intl/es-419/chrome/) and [Chrome's driver](https://chromedriver.chromium.org/). Do not forget to put the driver in your PATH after download. **/usr/local/bin** for Linux and Mac systems.
+```
+mv chromedriver /usr/local/bin
+```
 3. clone this repository and install all necessarry dependencies.
 ```
 git clone https://github.com/ClintonEnyinna/twitter_bot.git && cd twitter_bot
