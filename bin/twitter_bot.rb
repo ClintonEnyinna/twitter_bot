@@ -18,9 +18,22 @@ topic = gets.chomp
 
 puts "The default page scroll is '2'\nDo you want to modify it? (y/n)"
 change_scrolls = gets.chomp
+if change_scrolls == ""
+  change_scrolls = 'n'
+end
 if change_scrolls[0].downcase == "y"
   puts "How many page scrolls?"
-  scrolls = gets.chomp
+  while true
+    begin
+      scrolls = gets.chomp
+      if scrolls.to_i == 0
+        raise "Not a number"
+      end
+      break
+    rescue
+      puts "Number of scrolls should be a number!"
+    end
+  end
 else
   scrolls = "2"
 end
@@ -28,6 +41,9 @@ end
 user = User.new(username, password)
 puts "The default browser is #{user.browser}.\nDo you want to change it to chrome? (y/n)"
 change_browser = gets.chomp
+if change_browser == ""
+  change_browser = 'n'
+end
 if change_browser[0].downcase == "y"
   browser = "chrome"
   user.use_browser(browser)
