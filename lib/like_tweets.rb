@@ -16,9 +16,9 @@ class LikeTweets
 
     links.each do |link|
       @driver.navigate.to(link)
-      sleep 2
+      sleep 4
       begin
-        like = @driver.find_element(xpath: '//div[contains(@class, "r-rjfia")]//*[@aria-label="Like"]')
+        like = @driver.find_element(xpath: '//div[contains(@class, "r-rjfia")]//div[@aria-label="Like"]')
         @likes += 1
         puts 'Hurray! Twitter bot just liked a post!'
         begin
