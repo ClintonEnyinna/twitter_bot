@@ -10,13 +10,13 @@ require './lib/like_tweets.rb'
 
 puts 'Type in your username or email: '
 username = gets.chomp
-puts 'Type in your password: '
+puts "\nType in your password: "
 password = STDIN.getpass('Password:')
 
-puts 'What do you want to search for?'
+puts "\nWhat do you want to search for?"
 topic = gets.chomp
 
-puts "The default page scroll is '2'\nDo you want to modify it? (y/n)"
+puts "\nThe default page scroll is '2'\nDo you want to modify it? (y/n)"
 change_scrolls = gets.chomp
 change_scrolls = 'n' if change_scrolls == ''
 if change_scrolls[0].downcase == 'y'
@@ -37,13 +37,23 @@ else
 end
 
 user = User.new(username, password)
-puts "The default browser is #{user.browser}.\nDo you want to change it to chrome? (y/n)"
+puts "\nThe default browser is #{user.browser}.\nDo you want to change it to chrome? (y/n)"
 change_browser = gets.chomp
 change_browser = 'n' if change_browser == ''
 if change_browser[0].downcase == 'y'
   browser = 'chrome'
   user.use_browser(browser)
 end
+
+puts "\nThe app opens an instance of the browser.\nDo you want to run it in the background? (y/n)"
+headless_option = gets.chomp
+headless_option = 'n' if headless_option == ''
+if headless_option[0].downcase == 'y'
+  user.option_headless(true)
+else
+  user.option_headless(false)
+end
+
 user.login
 
 item = Search.new(topic, user.driver, scrolls.to_i)

@@ -9,14 +9,25 @@ class User
     @logged_in = false
     @browser = 'firefox'
     @driver = nil
+    @options = nil
   end
 
   def use_browser(browser)
     @browser = browser
   end
 
+  def option_headless(headless)
+    @options = if @browser == 'chrome'
+                 Selenium::WebDriver::Chrome::Options.new
+               else
+                 Selenium::WebDriver::Firefox::Options.new
+               end
+
+    @options.add_argument('--headless') if headless
+  end
+
   def login
-    @driver = Selenium::WebDriver.for @browser.to_sym
+    @driver = Selenium::WebDriver.for @browser.to_sym, options: @options
     @driver.manage.window.maximize
     url = 'https://twitter.com/login'
 
